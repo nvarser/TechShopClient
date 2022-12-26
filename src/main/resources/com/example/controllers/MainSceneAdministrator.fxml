@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.MainSceneAdminController">
+   <children>
+      <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="UserTab" text="Users">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="TableUsers" layoutX="2.0" onMouseClicked="#selectingUser" prefHeight="285.0" prefWidth="513.0">
+                           <columns>
+                              <TableColumn fx:id="UserId" prefWidth="75.0" text="UserId" />
+                              <TableColumn fx:id="UserName" prefWidth="75.0" text="Name" />
+                              <TableColumn fx:id="UserSurname" prefWidth="70.0" text="Surname" />
+                              <TableColumn fx:id="UserEmail" prefWidth="72.0" text="EMail" />
+                              <TableColumn fx:id="UserLogin" prefWidth="72.0" text="Login" />
+                              <TableColumn fx:id="UserPassword" prefWidth="73.0" text="Password" />
+                              <TableColumn fx:id="UserRole" prefWidth="75.0" text="Role" />
+                           </columns>
+                        </TableView>
+                        <TextField fx:id="AddingNameAdmin" layoutX="14.0" layoutY="296.0" prefHeight="25.0" prefWidth="116.0" promptText="Name" />
+                        <TextField fx:id="AddingSurnameAdmin" layoutX="14.0" layoutY="332.0" prefHeight="25.0" prefWidth="116.0" promptText="Surname" />
+                        <TextField fx:id="AddingLoginAdmin" layoutX="151.0" layoutY="296.0" prefHeight="25.0" prefWidth="113.0" promptText="Login" />
+                        <PasswordField fx:id="AddingPasswordAdmin" layoutX="151.0" layoutY="332.0" prefHeight="25.0" prefWidth="113.0" promptText="Password" />
+                        <TextField fx:id="AddingEmailAdmin" layoutX="275.0" layoutY="296.0" prefHeight="25.0" prefWidth="120.0" promptText="EMail" />
+                        <RadioButton fx:id="SelectRadioUser1" layoutX="406.0" layoutY="300.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="61.0" text="Admin">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="UserType" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="SelectRadioUser2" layoutX="406.0" layoutY="324.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="61.0" selected="true" text="Seller" toggleGroup="$UserType" />
+                        <RadioButton fx:id="SelectRadioUser3" layoutX="406.0" layoutY="349.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="57.0" text="Client" toggleGroup="$UserType" />
+                        <Button layoutX="276.0" layoutY="332.0" mnemonicParsing="false" onAction="#addingUser" prefHeight="25.0" prefWidth="54.0" text="Add" />
+                        <Label fx:id="WarningLabel" layoutX="474.0" layoutY="295.0" lineSpacing="2.0" prefHeight="71.0" prefWidth="119.0" textAlignment="CENTER" textFill="RED" wrapText="true" />
+                        <Button fx:id="ResfreshingButtonUsers" layoutX="527.0" layoutY="14.0" mnemonicParsing="false" onAction="#refreshingTableUser" prefHeight="25.0" prefWidth="61.0" text="Refresh" />
+                        <TextField fx:id="DeleteUserFieldID" layoutX="520.0" layoutY="100.0" prefHeight="25.0" prefWidth="72.0" promptText="Id" />
+                        <Separator layoutX="515.0" layoutY="63.0" prefHeight="2.0" prefWidth="91.0" />
+                        <Label layoutX="526.0" layoutY="66.0" text="Delete User" />
+                        <Button layoutX="531.0" layoutY="143.0" mnemonicParsing="false" onAction="#deletingUserById" text="Delete" />
+                        <Separator layoutX="515.0" layoutY="184.0" prefHeight="2.0" prefWidth="91.0" />
+                        <Label layoutX="526.0" layoutY="187.0" text="Search User" />
+                        <TextField fx:id="LoginSearchUserField" layoutX="523.0" layoutY="212.0" prefHeight="25.0" prefWidth="67.0" promptText="Login" />
+                        <Button layoutX="532.0" layoutY="254.0" mnemonicParsing="false" onAction="#searchingUserByLogin" text="Search" />
+                        <Separator layoutX="498.0" layoutY="284.0" prefHeight="2.0" prefWidth="102.0" />
+                        <Button layoutX="343.0" layoutY="332.0" mnemonicParsing="false" onAction="#editingUser" prefHeight="25.0" prefWidth="52.0" text="Edit" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+          <Tab fx:id="ProductsTab" text="Stock">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="TableProduct" onMouseClicked="#selectingProduct" prefHeight="285.0" prefWidth="513.0">
+                           <columns>
+                              <TableColumn fx:id="ProductId" prefWidth="62.0" text="Id" />
+                              <TableColumn fx:id="ProductName" prefWidth="88.0" text="Name" />
+                              <TableColumn fx:id="ProductAmount" prefWidth="70.0" text="Amount" />
+                              <TableColumn fx:id="ProductFirm" prefWidth="72.0" text="Firm" />
+                              <TableColumn fx:id="ProductPrice" prefWidth="72.0" text="Price" />
+                              <TableColumn fx:id="ProductRate" prefWidth="69.0" text="Rate" />
+                              <TableColumn fx:id="ProductAmountSells" prefWidth="79.0" text="Amount_sells" />
+                           </columns>
+                        </TableView>
+                        <TextField fx:id="AddingNameAdminProduct" layoutX="14.0" layoutY="292.0" prefHeight="25.0" prefWidth="116.0" promptText="Name" />
+                        <TextField fx:id="AddingAmountAdminProduct" layoutX="141.0" layoutY="292.0" prefHeight="25.0" prefWidth="116.0" promptText="Amount" />
+                        <TextField fx:id="AddingPriceAdminProduct" layoutX="16.0" layoutY="332.0" prefHeight="25.0" prefWidth="113.0" promptText="Price" />
+                        <Button layoutX="141.0" layoutY="332.0" mnemonicParsing="false" onAction="#addingProduct" prefHeight="25.0" prefWidth="54.0" text="Add" />
+                        <Label fx:id="WarningLabelProducts" layoutX="513.0" layoutY="293.0" lineSpacing="2.0" prefHeight="79.0" prefWidth="74.0" textAlignment="CENTER" textFill="RED" wrapText="true" />
+                        <Button fx:id="ResfreshingButtonUsers1" layoutX="530.0" layoutY="2.0" mnemonicParsing="false" onAction="#refreshingTableProduct" prefHeight="25.0" prefWidth="61.0" text="Refresh" />
+                        <TextField fx:id="ProductDeleteIdField" layoutX="518.0" layoutY="88.0" prefHeight="25.0" prefWidth="72.0" promptText="Id" />
+                        <Label layoutX="511.0" layoutY="58.0" text="  Delete Product" />
+                        <Button layoutX="529.0" layoutY="130.0" mnemonicParsing="false" onAction="#deletingProductById" text="Delete" />
+                        <Label layoutX="514.0" layoutY="178.0" text="Search Product" />
+                        <TextField fx:id="ProductSearchIdField" layoutX="521.0" layoutY="210.0" prefHeight="25.0" prefWidth="67.0" promptText="Id" />
+                        <Button layoutX="528.0" layoutY="250.0" mnemonicParsing="false" onAction="#searchingProductById" text="Search" />
+                        <Button layoutX="205.0" layoutY="332.0" mnemonicParsing="false" onAction="#editingProduct" prefHeight="25.0" prefWidth="52.0" text="Edit" />
+                        <Label layoutX="301.0" layoutY="285.0" text="Add firm to product" />
+                        <Button layoutX="300.0" layoutY="332.0" mnemonicParsing="false" onAction="#setProductFirm" text="Add existing firm" />
+                        <TextField fx:id="FirmFieldAdminExistId" layoutX="318.0" layoutY="305.0" prefHeight="25.0" prefWidth="72.0" promptText="IdFirm" />
+                        <Separator layoutX="278.0" layoutY="284.0" orientation="VERTICAL" prefHeight="87.0" prefWidth="4.0" />
+                        <Separator layoutX="430.0" layoutY="283.0" orientation="VERTICAL" prefHeight="88.0" prefWidth="0.0" />
+                        <Separator layoutX="461.0" layoutY="284.0" prefHeight="0.0" prefWidth="140.0" />
+                        <Separator layoutX="512.0" layoutY="167.0" prefHeight="1.0" prefWidth="89.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Firms">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="TableFirm" layoutX="158.0" onMouseClicked="#selectingFirm" prefHeight="248.0" prefWidth="284.0">
+                           <columns>
+                              <TableColumn fx:id="FirmId" prefWidth="116.0" text="Id" />
+                              <TableColumn fx:id="FirmName" prefWidth="167.0" text="Firm" />
+                           </columns>
+                        </TableView>
+                        <Button fx:id="ResfreshingButtonUsers11" layoutX="489.0" layoutY="2.0" mnemonicParsing="false" onAction="#refreshingTableFirm" prefHeight="25.0" prefWidth="61.0" text="Refresh" />
+                        <TextField fx:id="AddFirmNameField" layoutX="227.0" layoutY="281.0" promptText="FirmName" />
+                        <Button layoutX="258.0" layoutY="320.0" mnemonicParsing="false" onAction="#addingFirm" text="Add" />
+                        <Separator layoutX="158.0" layoutY="247.0" orientation="VERTICAL" prefHeight="134.0" prefWidth="6.0" />
+                        <Separator layoutX="439.0" layoutY="246.0" orientation="VERTICAL" prefHeight="137.0" prefWidth="6.0" />
+                        <TextField fx:id="DeleteFirmIdField" layoutX="9.0" layoutY="281.0" prefHeight="23.0" prefWidth="141.0" promptText="FirmId" />
+                        <TextField fx:id="SearchFirmIdField" layoutX="445.0" layoutY="281.0" promptText="FirmId" />
+                        <Button layoutX="54.0" layoutY="320.0" mnemonicParsing="false" onAction="#deletingFirmById" text="Delete" />
+                        <Button layoutX="487.0" layoutY="320.0" mnemonicParsing="false" onAction="#searchingFirm" text="Search" />
+                        <Label layoutX="277.0" layoutY="255.0" text="Add firm" />
+                        <Label layoutX="490.0" layoutY="255.0" text="Search firm" />
+                        <Label layoutX="50.0" layoutY="255.0" text="Delete firm" />
+                        <Separator layoutX="-46.0" layoutY="247.0" prefHeight="3.0" prefWidth="206.0" />
+                        <Separator layoutX="443.0" layoutY="247.0" prefHeight="3.0" prefWidth="186.0" />
+                        <Button layoutX="315.0" layoutY="320.0" mnemonicParsing="false" onAction="#editingFirm" text="Edit" />
+                        <Label fx:id="WarningLabelFirms" layoutX="506.0" layoutY="124.0" />
+                     </children>
+                  </AnchorPane>
+               </content></Tab>
+            <Tab text="Sellers">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="TableSellers" onMouseClicked="#selectingSeller" prefHeight="285.0" prefWidth="513.0">
+                           <columns>
+                              <TableColumn fx:id="SellerId" prefWidth="62.0" text="Id" />
+                              <TableColumn fx:id="SellerName" prefWidth="88.0" text="Name" />
+                              <TableColumn fx:id="SellerSurname" prefWidth="70.0" text="Surname" />
+                              <TableColumn fx:id="SellerHours" prefWidth="72.0" text="Hours" />
+                              <TableColumn fx:id="SellerHoursRate" prefWidth="72.0" text="HourRate" />
+                              <TableColumn fx:id="SellersSells" prefWidth="69.0" text="Sells" />
+                              <TableColumn fx:id="SellerRatePerSell" prefWidth="79.0" text="RatePerSell" />
+                           </columns>
+                        </TableView>
+                        <Label fx:id="WarningLabelSellers" layoutX="513.0" layoutY="293.0" lineSpacing="2.0" prefHeight="79.0" prefWidth="74.0" textAlignment="CENTER" textFill="RED" wrapText="true" />
+                        <Button fx:id="ResfreshingButtonUsers12" layoutX="526.0" layoutY="86.0" mnemonicParsing="false" onAction="#refreshingTableSellers" prefHeight="25.0" prefWidth="61.0" text="Refresh" />
+                        <Label layoutX="523.0" layoutY="178.0" text="Search Seller" />
+                        <TextField fx:id="SellerSearchIdField" layoutX="521.0" layoutY="210.0" prefHeight="25.0" prefWidth="67.0" promptText="Id" />
+                        <Button layoutX="528.0" layoutY="250.0" mnemonicParsing="false" onAction="#searchingSeller" text="Search" />
+                        <Separator layoutX="461.0" layoutY="284.0" prefHeight="0.0" prefWidth="140.0" />
+                        <Separator layoutX="512.0" layoutY="167.0" prefHeight="1.0" prefWidth="89.0" />
+                        <TextField fx:id="SellerHoursField" layoutX="14.0" layoutY="293.0" prefHeight="25.0" prefWidth="130.0" promptText="Hours" />
+                        <TextField fx:id="SellerHoursRateField" layoutX="14.0" layoutY="333.0" prefHeight="25.0" prefWidth="130.0" promptText="HourRate" />
+                        <TextField fx:id="SellerRatePerSellField" layoutX="171.0" layoutY="293.0" prefHeight="25.0" prefWidth="130.0" promptText="RatePerSell" />
+                        <Button layoutX="196.0" layoutY="333.0" mnemonicParsing="false" onAction="#editingSeller" prefHeight="25.0" prefWidth="80.0" text="Edit" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Salaries">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="212.0" layoutY="14.0" text="Salary calculator">
+                           <font>
+                              <Font name="Palatino Linotype" size="24.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="SellerIdSalaryField" layoutX="226.0" layoutY="71.0" />
+                        <TextField fx:id="SellerNameSalaryField" disable="true" layoutX="226.0" layoutY="107.0" />
+                        <TextField fx:id="SellerSurnameSalaryField" disable="true" layoutX="226.0" layoutY="143.0" />
+                        <TextField fx:id="SellerHoursSalaryField" disable="true" layoutX="226.0" layoutY="179.0" prefHeight="22.0" prefWidth="149.0" />
+                        <TextField fx:id="SellerHoursRateSalaryField" disable="true" layoutX="226.0" layoutY="215.0" />
+                        <TextField fx:id="SellerAmountSellsSalaryField" disable="true" layoutX="226.0" layoutY="250.0" />
+                        <TextField fx:id="SellerRatePerSellSalaryField" disable="true" layoutX="226.0" layoutY="283.0" />
+                        <Label layoutX="149.0" layoutY="75.0" text="SellerID" />
+                        <Label layoutX="151.0" layoutY="111.0" text="Name" />
+                        <Label layoutX="146.0" layoutY="147.0" text="Surname" />
+                        <Label layoutX="151.0" layoutY="183.0" text="Hours" />
+                        <Label layoutX="151.0" layoutY="219.0" text="HourRate" />
+                        <Label layoutX="151.0" layoutY="254.0" text="Amount sells" />
+                        <Label layoutX="147.0" layoutY="287.0" text="RatePerSell" />
+                        <Button fx:id="ButtonCalculate" layoutX="226.0" layoutY="321.0" mnemonicParsing="false" onAction="#calculateSalarySeller" prefHeight="30.0" prefWidth="148.0" text="Calculate" textAlignment="CENTER">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="SellerSalaryField" editable="false" layoutX="226.0" layoutY="320.0" prefHeight="33.0" prefWidth="149.0" visible="false" />
+                        <Label fx:id="SalaryLabel" layoutX="146.0" layoutY="328.0" text="Salary:" visible="false" />
+                        <Button layoutX="24.0" layoutY="17.0" mnemonicParsing="false" onAction="#resetButtonSalary" text="Reset" />
+                        <Label fx:id="LabelSalaryWarning" layoutX="389.0" layoutY="75.0" textFill="RED" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="SellerReports">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="191.0" layoutY="14.0" text="Creating seller report">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="ReportSellerIdField" layoutX="226.0" layoutY="161.0" promptText="IdSeller" />
+                        <Button layoutX="257.0" layoutY="221.0" mnemonicParsing="false" onAction="#creatingReportSeller" text="Create report" />
+                        <Label fx:id="CreateReportLabel" layoutX="197.0" layoutY="89.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="WarningLabelSellerReport" layoutX="383.0" layoutY="165.0" textFill="RED" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Profile">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="ProfileName" layoutX="16.0" layoutY="25.0" text="Piska">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="ProfileSurname" layoutX="16.0" layoutY="65.0" text="Piska">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="ProfileEmail" layoutX="16.0" layoutY="101.0" text="piska" />
+                        <Label fx:id="ProfileLogin" layoutX="16.0" layoutY="132.0" text="piska" />
+                        <Label fx:id="ProfilePassword" layoutX="16.0" layoutY="162.0" text="piska" />
+                        <Label fx:id="ProfileRole" layoutX="307.0" layoutY="67.0" text="piska" wrapText="true">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="408.0" layoutY="14.0" text="Role:">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="ProfileButtonEdit" layoutX="250.0" layoutY="308.0" mnemonicParsing="false" onAction="#editProfile" prefHeight="40.0" prefWidth="115.0" text="Edit" textAlignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="ProfileNameEdit" layoutX="14.0" layoutY="23.0" prefHeight="24.0" prefWidth="203.0" visible="false">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="ProfileSurnameEdit" layoutX="16.0" layoutY="63.0" visible="false" />
+                        <TextField fx:id="ProfileEmailEdit" layoutX="16.0" layoutY="97.0" visible="false" />
+                        <TextField fx:id="ProfileLoginEdit" layoutX="16.0" layoutY="128.0" visible="false" />
+                        <TextField fx:id="ProfilePasswordEdit" layoutX="16.0" layoutY="158.0" visible="false" />
+                        <Button layoutX="506.0" layoutY="19.0" mnemonicParsing="false" onAction="#clickedOnBack" prefHeight="25.0" prefWidth="80.0" text="Exit system" textFill="#2c1c1c" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
